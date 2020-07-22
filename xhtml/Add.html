@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Page</title>
+        <script src="js/match.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+        <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+        <script src="js/datePicker.js" charset="utf-8"></script>
+    </head>
+
+    <body>
+        <form action="Add.php" method="POST" style="text-align:center;">
+            <table border="1" align="center">
+                <tr>
+                    <td>ISBN</td>
+                    <td><input type="text" name="Isbn" maxLength="13" required="required"  value="<?php echo $isbn; ?>" /></td>
+                </tr>
+                <tr>
+                    <td>出版社</td>
+                    <td><input type="text" name="comp" maxLength="20" required="required" value="<?php echo $comp; ?>" /></td>
+                </tr>
+                <tr>
+                    <td>書名</td>
+                    <td><input type="text" name="book" maxLength="20" required="required" value="<?php echo $book; ?>" /></td>
+                </tr>
+                <tr>
+                    <td>作者</td>
+                    <td><input type="text" name="aut" maxLength="20" required="required" value="<?php echo $aut; ?>" /></td>
+                </tr>
+                <tr>
+                    <td>定價</td>
+                    <td><input type="text" name="price" maxLength="20" required="required" value="<?php echo $price; ?>" /></td>
+                </tr>
+                <tr>
+                    <td>發行日</td>
+                    <td><input type="text" name="date" id="datepicker" required="required" value="<?php echo $date; ?>" /></td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Add" />
+        </form>
+        <p style="text-align:center;">
+        <input type ="button" onclick="javascript:location.href='index.php'" value="Home"></input>
+        </p>
+    </body>
+
+</html>

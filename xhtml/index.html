@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Index Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script src="js/ConfirmBox.js" charset="utf-8"></script>
+    </head>
+
+    <body>
+        <div style="text-align:center;">
+            資料匯出&nbsp;
+            <input type="button" onclick="javascript:location.href='<? echo $outputUrl; ?>'" value="匯出" />
+        </div>
+        <p nowrap style="text-align:right;">
+            <form action="index.php" method="GET" style="text-align:right;">
+                排序
+                <select name="order" id="order">
+                    <option value="ISBN">ISBN</option>
+                    <option value="Comp">出版社</option>
+                    <option value="Book">書名</option>
+                    <option value="Author">作者</option>
+                    <option value="Price">定價</option>
+                    <option value="Date">發行日</option>
+                </select>
+                方向
+                <select name="sc" id="sc">
+                    <option value="ASC">ASC</option>
+                    <option value="DESC">DESC</option>
+                </select>
+                <input type="submit" value="排序" />
+            </form>  
+        </p>
+        <table border="1" width="100%">
+            <tr>
+                <th width="20%">ISBN</th>
+                <th width="15%">出版社</th>
+                <th width="20%">書名</th>
+                <th width="15%">作者</th>
+                <th width="10%">定價</th>
+                <th width="10%">發行日</th>
+                <th width="10%">編輯/刪除</th>
+            </tr>
+            <? foreach($result as $res){ ?>
+                <tr>
+                    <td><? echo $res["ISBN"]; ?></td>
+                    <td><? echo $res["Comp"]; ?></td>
+                    <td><? echo $res["Book"]; ?></td>
+                    <td><? echo $res["Author"]; ?></td>
+                    <td><? echo $res["Price"]; ?></td>
+                    <td><? echo $res["Date"]; ?></td>
+                    <td>
+                    <?php
+                    if(isset($_GET["order"]) && isset($_GET["sc"])){
+                        $urlEdit = "Edit.php?id=" . $res["id"] . "&order=" . $_GET["order"] . "&sc=" . $_GET["sc"];
+                    }else{
+                        $urlEdit = "Edit.php?id=" . $res["id"];
+                    }
+                    $id = $res["id"];
+           
+                    ?>
+                    <input type ="button" onclick="javascript:location.href='<?php echo $urlEdit ?>'" value="EDIT"></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type ="button" onclick="con(<? echo $id; ?>)" value="DEL"></input>
+                    </td>
+                </tr>
+            <? } ?>
+
+        </table>
+
+        <p style="text-align:center;">
+            <input type ="button" onclick="javascript:location.href='Add.php'" value="Add"></input>
+            </p>
+    </body>
+
+
+    
+</html>
